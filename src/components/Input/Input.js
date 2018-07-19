@@ -8,31 +8,31 @@ export default class Input extends Component {
         super(props);
 
         this.state = { 
-            searchVal: '',
-            list: [],
-            showResult: false,
-            currVal: 0
+            searchVal: '',          //输入框输入的值
+            list: [],               //输入值匹配到的数组
+            showResult: false,      //是否展示结果
+            currVal: 0              //当前选中的值的index
         };
-        this.onInputChange = this.onInputChange.bind(this);
-        this.handleKey = this.handleKey.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);     //input输入事件绑定this
+        this.handleKey = this.handleKey.bind(this);             //input键盘事件绑定this
     }
     // putting the event parameter by convention
     onInputChange(event) {
         const searchVal = event.target.value
-        const list = searchVal !== '' ? getFilteredUsers(searchVal) : []
+        const list = searchVal !== '' ? getFilteredUsers(searchVal) : []        //输入值为空的时候设为空数组，否则就用匹配到的数组
         this.setState({ 
             searchVal,
-            list,
-            showResult: true
+            list,               //(es6的对象简洁写法，等同于 list:  list)
+            showResult: true                                //输入的时候展示结果
         });
         
     }
     handleKey(e) {
-        const { currVal, list } = this.state
+        const { currVal, list } = this.state        // (es6的对象解构)
         const l = list.length
-        console.log(l,currVal,e.keyCode)
-        if (l) {
-            if (e.keyCode === 38) {
+        //有数据的情况下才能进行键盘事件
+        if (l) {                    
+            if (e.keyCode === 38) {         //上箭头
                 //up
                 if (currVal !== 0) {
                     this.setState({
@@ -40,7 +40,7 @@ export default class Input extends Component {
                     })
                 }
             }
-            if (e.keyCode === 40) {
+            if (e.keyCode === 40) {         //下箭头
                 //down
                 if (currVal <= l) {
                     this.setState({
