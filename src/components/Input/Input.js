@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import getFilteredUsers from '../../../server/index'
-import List from '../List/List'
 
 
 export default class Input extends Component {
