@@ -53,3 +53,6 @@ input[type='text'] {
   color: #01cf97;
   cursor: pointer;
 }
+.currVal {
+  background-color: #e6f7ff;
+}
